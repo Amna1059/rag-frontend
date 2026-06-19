@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #15130F;
+  --ink-raised: #1D1A14;
+  --parchment: #EDE6D6;
+  --parchment-dim: #A39C8A;
+  --ember: #E8804A;
+  --ember-dim: #B85F33;
+  --sage: #7A9485;
+  --line: #312C22;
+  --error: #D4634A;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Inter', sans-serif;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+  min-height: 100vh;
+}
+
+/* Intro */
+.intro {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.intro-mark {
+  margin-bottom: 1.5rem;
+}
+
+.intro-mark-glyph {
+  font-size: 1.5rem;
+  color: var(--ember);
+  display: inline-block;
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.eyebrow {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+}
+
+.intro h1 {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+  font-size: 3.4rem;
+  font-weight: 500;
+  line-height: 1.02;
+  margin: 0 0 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--parchment);
+}
+
+.tagline {
+  color: var(--parchment-dim);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Dropzone */
+.dropzone {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+
+.dropzone.drag-over {
+  border-color: var(--ember);
+}
+
+.dropzone.scanning {
+  cursor: default;
+}
+
+.scan-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(232,128,74,0.18), transparent);
+  animation: scan 1.4s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% { left: -30%; }
+  100% { left: 100%; }
+}
+
+.dropzone-text {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  margin: 0 0 0.3rem;
+  color: var(--parchment);
+  position: relative;
+}
+
+.dropzone-sub {
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+  margin: 0;
+  position: relative;
+}
+
+.status-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--sage);
+  margin-top: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.btn-primary {
+  background: var(--ember);
+  color: var(--ink);
+  border: none;
+  padding: 0.7rem 1.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover:not(:disabled) { background: #F09660; }
+.btn-primary:active:not(:disabled) { transform: scale(0.98); }
+.btn-primary:disabled { background: #4A4438; color: var(--parchment-dim); cursor: not-allowed; }
+
+.btn-compact { margin-top: 0; padding: 0.7rem 1.4rem; }
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--sage);
+  font-size: 0.78rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+}
+
+.error-text { color: var(--error); font-size: 0.85rem; margin-top: 1rem; }
+.error-inline { color: var(--error); }
+
+/* Reading room */
+.doc-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.doc-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.3rem;
+}
+
+.doc-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--parchment);
+}
+
+.doc-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 0.72rem;
+  color: var(--parchment-dim);
+}
+
+/* Thread */
+.thread {
+  min-height: 320px;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+}
+
+.empty-glyph {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--ember-dim);
+  margin-bottom: 0.75rem;
+}
+
+.empty-state p {
+  color: var(--parchment-dim);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.note {
+  margin-bottom: 1.25rem;
+  animation: rise 0.3s ease;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.note-user .note-body {
+  font-size: 0.95rem;
+  color: var(--parchment);
+  padding-left: 1rem;
+  border-left: 2px solid var(--line);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.excerpt-card {
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--ember);
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.2rem;
+}
+
+.note-body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--parchment);
+}
+
+.note-source {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--sage);
+  margin-top: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.pulse {
+  color: var(--parchment-dim);
+  font-style: italic;
+  animation: fade-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes fade-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Composer */
+.composer {
+  display: flex;
+  gap: 0.6rem;
+  position: sticky;
+  bottom: 1.5rem;
+}
+
+.composer input {
+  flex: 1;
+  padding: 0.8rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: var(--ink-raised);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--parchment);
+}
+
+.composer input:focus {
+  outline: none;
+  border-color: var(--ember);
+}
+
+.composer input::placeholder { color: #5A5345; }
+
+@media (max-width: 480px) {
+  .intro h1 { font-size: 2.4rem; }
+  .page { padding: 2.5rem 1rem 2rem; }
+}
